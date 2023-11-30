@@ -1,56 +1,90 @@
+{% load static %}
+
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" >
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-
-    <style>
-        
-        
-    </style>
+  <meta charset="UTF-8">
+  <title>First Page</title>
+  <link rel="stylesheet" href="{% static 'loginapp/styles.css' %}">
+  <link rel='stylesheet' href='https://cdn.jsdelivr.net/gh/alphardex/aqua.css@master/dist/aqua.min.css'>
 </head>
-
-
-
 <body>
-    <header>
-        <div>
-            <a href="admin">Sign In (Admin)</a>
-        </div>
+  <div class="stars">
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+  </div>
+<main class="container">
+  <div class="button-container">
+    <button id="button-cancel" type="button" class="mark button secondary-button mr-12" onClick="">
+      <a href="admin">Admin</a>
+    </button>
+    <button id="button-submit" type="button" class="mark button primary-button" onClick="">
+      Employee
+    </button>
+    <form action="signinUserSubmit" method="post">
+      {% csrf_token %}
+      <div>
+        <input type="text" name="email" required />
+        <label for="email">Email</label>
+      </div>
+      <div>
+        <input type="password" name="passwd" required />
+        <label for="passwd">Password</label>
+      </div>
 
-        <div>
-            <a href="">sign in user</a>
+      <button type="submit">Login</button>
+    </form>
+  </div>
+</main>
 
-            <form action="signinUserSubmit" method="post">
-                {% csrf_token %}
-                <div>
-                  <input type="text" name="email" required />
-                  <label for="email">Email</label>
-                </div>
-                <div>
-                  <input type="password" name="passwd" required />
-                  <label for="passwd">Password</label>
-                </div>
-        
-                <button type="submit">Login</button>
-              </form>
-        </div>
-    </header>
 </body>
-
-
-
-
-<script>
-    
-</script>
 </html>
-
-
-
-
-
-
-
-
