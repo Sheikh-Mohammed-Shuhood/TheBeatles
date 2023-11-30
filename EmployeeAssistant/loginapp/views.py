@@ -30,6 +30,25 @@ def welcomePage(request):
     print(nm)
     return render(request,"loginapp/index.html")
 
+
+def signinUserSubmit(request):
+    if(request.method == 'POST'):
+        email = request.POST['email']
+        passwd = request.POST['passwd']
+
+        try:
+            user = authe.sign_in_with_email_and_password(email,passwd)
+            print("sign in successful", user)
+            return HttpResponseRedirect('/employeeapp/')
+        except Exception as e:
+            print("sign in unsuccessful")
+
+    return redirect('welcomePage')
+
+
+
+
+
 def loginAdmin(request):
     return render(request,"loginapp/dashboard.html")
 
@@ -56,13 +75,27 @@ def registerUserSubmit(request):
         age=request.POST['age']
         gender=request.POST['gender']
         passwd=request.POST['passwd']
+
+        userData = {
+            "name":fname,
+            "eid":eid,
+            "phone":phone,
+            "email":email,
+            "age":age,
+            "gender":gender,
+            }
+        
+
         try:
             user = authe.create_user_with_email_and_password(email, passwd)
+            database.child("users").child(email.replace(".", "_")).set(userData)
             print("User created:", user)
             send_verification_email(user)
+            messages.success(request,f"successfully logged in as {user['email']}")
             print("pass")
-            
         except Exception as e:
             print("fail")
-            return redirect('admin')
+            messages.error(request,f"failed to login")
+            # return redirect('dashboard')
+
     return redirect('admin')

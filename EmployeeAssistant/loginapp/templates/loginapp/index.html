@@ -6,7 +6,7 @@
     <title>Document</title>
 
     <style>
-
+        
         
     </style>
 </head>
@@ -18,8 +18,23 @@
         <div>
             <a href="admin">Sign In (Admin)</a>
         </div>
+
         <div>
-            <a href="user">Sign In (User)</a>
+            <a href="">sign in user</a>
+
+            <form action="signinUserSubmit" method="post">
+                {% csrf_token %}
+                <div>
+                  <input type="text" name="email" required />
+                  <label for="email">Email</label>
+                </div>
+                <div>
+                  <input type="password" name="passwd" required />
+                  <label for="passwd">Password</label>
+                </div>
+        
+                <button type="submit">Login</button>
+              </form>
         </div>
     </header>
 </body>

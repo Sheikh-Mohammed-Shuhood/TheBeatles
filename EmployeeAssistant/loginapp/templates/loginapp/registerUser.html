@@ -30,6 +30,18 @@
         <input type="text" name="passwd">
         <button type="submit" value="Submit">Submit</button>
       </form>
+
+      <div class="msg">
+        {%for i in messages%}
+        <script type="text/javascript">
+          function myfun() {
+            alert("{{i}}");
+          }
+          myfun();
+        </script>
+        {%endfor%}
+      </div>
       
 </body>
+
 </html>
