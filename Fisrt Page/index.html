@@ -62,24 +62,10 @@
 <main class="container">
   <div class="button-container">
     <button id="button-cancel" type="button" class="mark button secondary-button mr-12" onClick="">
-      <a href="admin">Admin</a>
+      Admin
     </button>
     <button id="button-submit" type="button" class="mark button primary-button" onClick="">
       Employee
-
-      <form action="signinUserSubmit" method="post">
-        {% csrf_token %}
-        <div>
-          <input type="text" name="email" required />
-          <label for="email">Email</label>
-        </div>
-        <div>
-          <input type="password" name="passwd" required />
-          <label for="passwd">Password</label>
-        </div>
-
-        <button type="submit">Login</button>
-      </form>
     </button>
   </div>
 </main>
