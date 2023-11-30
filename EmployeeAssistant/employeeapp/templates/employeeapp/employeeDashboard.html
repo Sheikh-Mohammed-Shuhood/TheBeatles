@@ -25,10 +25,10 @@
         <link href="lib/owlcarousel/owl.carousel.min.css" rel="stylesheet">
 
         <!-- Customized Bootstrap Stylesheet -->
-        <link href="{% static 'employeeapp/bootstrap.min.css' %}" rel="stylesheet">
+        <!-- <link rel="stylesheet" href="{% static 'employeeapp/bootstrap.min.css' %}"> -->
 
         <!-- Template Stylesheet -->
-        <link href="{% static 'employeeapp/style.css' %}" rel="stylesheet">
+        <!-- <link rel="stylesheet" href="{% static 'employeeapp/style.css' %}"> -->
     </head>
 
     <body>
@@ -113,29 +113,36 @@
                     <div class="col-1">
                         <img src="img/background-site.jpg" class="img-fluid h-100 w-100 rounded-start" style="object-fit: cover; opacity: 0.7;" alt="">
                     </div>
-                    <div class="col-10">
-                        <div class="border-bottom border-top border-primary bg-light py-5 px-4">
-                            <div class="text-center">
-                                <h1 class="display-5 mb-5">Enter Your Question</h1>
+
+
+                    <div class="col-10" style="background-color: rgb(189, 189, 255)">
+                        <form action="querySubmit" method="post" >
+                            {% csrf_token %}
+                            <div class="border-bottom border-top border-primary bg-light py-5 px-4">
+                                <div class="text-center">
+                                    <h1 class="display-5 mb-5">Enter Your Question</h1>
+                                </div>
+                                <div class="col g-4 form">
+                                    <div class="col-lg-4 my-4 col-md-6 align-items-center justify-content-center">
+                                        <select class="form-select border-primary p-2" aria-label="Default select example" name="department" required>
+                                            <option selected value="Finance">Finance</option>
+                                            <option value="Marketing">Marketing</option>
+                                            <option value="Analyst">Analyst</option>
+                                            <option value="Devop">Devop</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-lg-12 my-4 col-md-6">
+                                        <input type="text" class="form-control border-primary p-2" placeholder="Enter Your Query" name="query" required>
+                                    </div>
+                                    <div class="col-12 text-center">
+                                        <button type="submit" class="btn btn-primary px-5 py-3 rounded-pill">Submit Now</button>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col g-4 form">
-                                <div class="col-lg-4 my-4 col-md-6 align-items-center justify-content-center">
-                                    <select class="form-select border-primary p-2" aria-label="Default select example" required>
-                                        <option selected>Finance</option>
-                                        <option value="1">Marketing</option>
-                                        <option value="2">Analyst</option>
-                                        <option value="3">Devop</option>
-                                    </select>
-                                </div>
-                                <div class="col-lg-12 my-4 col-md-6">
-                                    <input type="text" class="form-control border-primary p-2" placeholder="Enter Your Query" required>
-                                </div>
-                                <div class="col-12 text-center">
-                                    <button type="submit" class="btn btn-primary px-5 py-3 rounded-pill">Submit Now</button>
-                                </div>
-                            </div>
-                        </div>
+                        </form>
                     </div>
+
+
                     <div class="col-1">
                         <img src="img/background-site.jpg" class="img-fluid h-100 w-100 rounded-end" style="object-fit: cover; opacity: 0.7;" alt="">
                     </div>

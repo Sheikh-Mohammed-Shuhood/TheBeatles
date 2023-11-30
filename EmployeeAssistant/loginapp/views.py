@@ -38,7 +38,8 @@ def signinUserSubmit(request):
 
         try:
             user = authe.sign_in_with_email_and_password(email,passwd)
-            print("sign in successful", user)
+            request.session['user_email'] = user['email']
+            print("\n\nsign in successful\n\n", user)
             return HttpResponseRedirect('/employeeapp/')
         except Exception as e:
             print("sign in unsuccessful")
@@ -88,7 +89,11 @@ def registerUserSubmit(request):
 
         try:
             user = authe.create_user_with_email_and_password(email, passwd)
-            database.child("users").child(email.replace(".", "_")).set(userData)
+            database.child("users").child(user['localId']).set(userData)
+            
+            retrieved_user_details = database.child('users').child(user['localId']).get().val()
+            print("\n\n",retrieved_user_details['email'],"\n\n")
+
             print("User created:", user)
             send_verification_email(user)
             messages.success(request,f"successfully logged in as {user['email']}")
