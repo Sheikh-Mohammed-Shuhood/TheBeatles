@@ -38,6 +38,7 @@ def signinUserSubmit(request):
 
         try:
             user = authe.sign_in_with_email_and_password(email,passwd)
+            print("---")
             request.session['user_email'] = user['email']
             print("\n\nsign in successful\n\n", user)
             return HttpResponseRedirect('/employeeapp/')

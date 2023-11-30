@@ -51,8 +51,8 @@
                     <div class="collapse navbar-collapse" id="navbarCollapse">
                         <div class="navbar-nav mx-auto">
                             <a href="index.html" class="nav-item nav-link">Home</a>
-                            <a href="feed.html" class="nav-item nav-link active">Feed</a>
-                            <a href="query.html" class="nav-item nav-link">Query</a>
+                            <a href="feed.html" class="nav-item nav-link">Feed</a>
+                            <a href="query.html" class="nav-item nav-link active">Query</a>
                             <a href="unanswered.html" class="nav-item nav-link">Unanswered</a>
                             
                         </div>
@@ -86,78 +86,59 @@
         <!-- Hero Start -->
         <div class="container-fluid bg-light py-1 my-1 mt-0">
             <div class="container text-center animated bounceInDown">
-                <h1 class="display-1 mb-1">Content</h1>
+                <h1 class="display-1 mb-1">Add Your Query</h1>
             </div>
-        </div>  
+        </div>
         <!-- Hero End -->
 
-
-        <!-- Service Start -->
-        <div class="container-fluid service py-6">
+        <div class="container-fluid contact py-6 wow bounceInUp" data-wow-delay="0.1s">
             <div class="container">
-                <div class="row g-4">
-                    <div class="col-lg-3 col-md-6 col-sm-12 wow bounceInUp" data-wow-delay="0.1s">
-                        <div class="bg-light rounded service-item">
-                            <div class="service-content d-flex align-items-center justify-content-center p-4">
-                                <div class="service-content-icon text-center">
-                                    <i class="fas fa-dollar-sign fa-7x text-primary mb-4"></i>
-                                    <h4 class="mb-3">Finance</h4>
-                                    <a href="finance.html" class="btn btn-primary px-4 py-2 rounded-pill">Proceed</a>
+                <div class="row g-0">
+                    <div class="col-1">
+                        <img src="img/background-site.jpg" class="img-fluid h-100 w-100 rounded-start" style="object-fit: cover; opacity: 0.7;" alt="">
+                    </div>
+                    <div class="col-10">
+                        <div class="border-bottom border-top border-primary bg-light py-5 px-4">
+                            <div class="text-center">
+                                <h1 class="display-5 mb-5">Enter Your Question</h1>
+                            </div>
+                            <div class="col g-4 form">
+                                <div class="col-lg-4 my-4 col-md-6 align-items-center justify-content-center">
+                                    <select class="form-select border-primary p-2" aria-label="Default select example" required>
+                                        <option selected>Finance</option>
+                                        <option value="1">Marketing</option>
+                                        <option value="2">Analyst</option>
+                                        <option value="3">Devop</option>
+                                    </select>
+                                </div>
+                                <div class="col-lg-12 my-4 col-md-6">
+                                    <input type="text" class="form-control border-primary p-2" placeholder="Enter Your Query" required>
+                                </div>
+                                <div class="col-12 text-center">
+                                    <button type="submit" class="btn btn-primary px-5 py-3 rounded-pill">Submit Now</button>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-6 col-sm-12 wow bounceInUp" data-wow-delay="0.3s">
-                        <div class="bg-light rounded service-item">
-                            <div class="service-content d-flex align-items-center justify-content-center p-4">
-                                <div class="service-content-icon text-center">
-                                    <i class="fas fa-globe fa-7x text-primary mb-4"></i>
-                                    <h4 class="mb-3">Marketing</h4>
-                                    <a href="marketing.html" class="btn btn-primary px-4 py-2 rounded-pill">Proceed</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-12 wow bounceInUp" data-wow-delay="0.5s">
-                        <div class="bg-light rounded service-item">
-                            <div class="service-content d-flex align-items-center justify-content-center p-4">
-                                <div class="service-content-icon text-center">
-                                    <i class="fas fa-solid fa-chart-line fa-7x text-primary mb-4"></i>
-                                    <h4 class="mb-3">Analyst</h4>
-                                    <a href="analyst.html" class="btn btn-primary px-4 py-2 rounded-pill">Proceed</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-12 wow bounceInUp" data-wow-delay="0.7s">
-                        <div class="bg-light rounded service-item">
-                            <div class="service-content d-flex align-items-center justify-content-center p-4">
-                                <div class="service-content-icon text-center">
-                                    <i class="fas fa-solid fa-code fa-7x text-primary mb-4"></i>
-                                    <h4 class="mb-3">Devop</h4>
-                                    <a href="devop.html" class="btn btn-primary px-4 py-2 rounded-pill">Proceed</a>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="col-1">
+                        <img src="img/background-site.jpg" class="img-fluid h-100 w-100 rounded-end" style="object-fit: cover; opacity: 0.7;" alt="">
                     </div>
                 </div>
             </div>
         </div>
-        <!-- Service End -->
-    
-    <!-- JavaScript Libraries -->
-    <!-- JavaScript Libraries -->
-    <script src="{{url_for('static',filename='https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js')}}"></script>
-    <script src="{{url_for('static',filename='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js')}}"></script>
-    <script src="{{url_for('static',filename='lib/wow/wow.min.js')}}"></script>
-    <script src="{{url_for('static',filename='lib/easing/easing.min.js')}}"></script>
-    <script src="{{url_for('static',filename='lib/waypoints/waypoints.min.js')}}"></script>
-    <script src="{{url_for('static',filename='lib/counterup/counterup.min.js')}}"></script>
-    <script src="{{url_for('static',filename='lib/lightbox/js/lightbox.min.js')}}"></script>
-    <script src="{{url_for('static',filename='lib/owlcarousel/owl.carousel.min.js')}}"></script>
+        
+ <!-- JavaScript Libraries -->
+ <script src="{{url_for('static',filename='https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js')}}"></script>
+ <script src="{{url_for('static',filename='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js')}}"></script>
+ <script src="{{url_for('static',filename='lib/wow/wow.min.js')}}"></script>
+ <script src="{{url_for('static',filename='lib/easing/easing.min.js')}}"></script>
+ <script src="{{url_for('static',filename='lib/waypoints/waypoints.min.js')}}"></script>
+ <script src="{{url_for('static',filename='lib/counterup/counterup.min.js')}}"></script>
+ <script src="{{url_for('static',filename='lib/lightbox/js/lightbox.min.js')}}"></script>
+ <script src="{{url_for('static',filename='lib/owlcarousel/owl.carousel.min.js')}}"></script>
 
-    <!-- Template Javascript -->
-    <script src="{{url_for('static',filename='js/main.js')}}"></script>
+ <!-- Template Javascript -->
+ <script src="{{url_for('static',filename='js/main.js')}}"></script>
     </body>
 
 </html>
