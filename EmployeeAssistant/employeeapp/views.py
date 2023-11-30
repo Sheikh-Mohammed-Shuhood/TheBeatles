@@ -21,7 +21,7 @@ database = firebase.database()
 
 # Create your views here.
 def employeeDashboard(request):
-    return render(request,"employeeapp/employeeDashboard.html")
+    return render(request,"employeeapp/index.html")
 
 
 def querySubmit(request):
@@ -48,3 +48,29 @@ def querySubmit(request):
             print("cant store the query")
             messages.error(request,f"failed to store query")
     return redirect('employeeDashboard')
+
+
+
+def feed(request):
+    return render(request,"employeeapp/feed.html")
+
+def query(request):
+    return render(request,"employeeapp/query.html")
+
+def unanswered(request):
+    return render(request,"employeeapp/unanswered.html")
+
+def finance(request):
+    return render(request,"employeeapp/finance.html")
+
+def marketing(request):
+    return render(request,"employeeapp/marketing.html")
+
+def analyst(request):
+    return render(request,"employeeapp/analyst.html")
+
+def devop(request):
+    return render(request,"employeeapp/devop.html")
+
+def answering(request):
+    return render(request,"employeeapp/answering.html")
