@@ -51,11 +51,13 @@ h4, h5, h6, .h4, .h5, .h6 {
 /*** Button Start ***/
 .btn.btn-primary {
     border: 0;
+    background: #001F3F;
+    color:#FFFFFF
 }
 
 .btn.btn-primary:hover {
-    background: var(--bs-dark) !important;
-    color: var(--bs-primary) !important;
+    background: #001F3F !important;
+    color: #FFFFFF !important;
 }
 
 .btn {
@@ -98,7 +100,7 @@ h4, h5, h6, .h4, .h5, .h6 {
 
 /*** Navbar Start ***/
 .nav-bar {
-    background: var(--bs-light);
+    background: radial-gradient(ellipse at bottom, #0d1d31 0%, #0c0d13 100%);
     border-bottom: 1px solid rgba(0, 0, 0, .05);
 }
 
@@ -111,7 +113,7 @@ h4, h5, h6, .h4, .h5, .h6 {
 
 .navbar .navbar-nav .nav-link:hover,
 .navbar .navbar-nav .nav-link.active {
-    color: var(--bs-primary);
+    color: #FFFFFF;
 }
 
 .navbar .dropdown-toggle::after {
@@ -126,7 +128,7 @@ h4, h5, h6, .h4, .h5, .h6 {
 @media (min-width: 1200px) {
     .navbar .nav-item .dropdown-menu {
         display: block;
-        visibility: hidden;
+        visibility: visible;
         top: 100%;
         transform: rotateX(-75deg);
         transform-origin: 0% 0%;
@@ -142,8 +144,8 @@ h4, h5, h6, .h4, .h5, .h6 {
 }
 
 .dropdown .dropdown-menu a:hover {
-    background: var(--bs-primary);
-    color: var(--bs-white);
+    background: #FFFFFF;
+    color: #0d1d31;
 }
 
 #searchModal .modal-content {
@@ -213,7 +215,7 @@ h4, h5, h6, .h4, .h5, .h6 {
 }
 
 .service-item:hover .service-content-icon i {
-    color: var(--bs-dark) !important;
+    color: #5fa9f4 !important;
 }
 
 .service-item:hover .service-content-icon p {
@@ -222,7 +224,7 @@ h4, h5, h6, .h4, .h5, .h6 {
 
 .service-item:hover .service-content-icon a.btn-primary {
     background: var(--bs-white);
-    color: var(--bs-dark);
+    color: #5fa9f4;
 }
 
 .service-item .service-content-icon a.btn-primary {

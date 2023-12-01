@@ -10,11 +10,13 @@ urlpatterns = [
     path('feed/',views.feed,name='feed'),
     path('query/',views.query,name='query'),
     path('unanswered/',views.unanswered,name='unanswered'),
-    path('finance/',views.finance,name='finance'),
-    path('marketing/',views.marketing,name='marketing'),
-    path('analyst/',views.analyst,name='analyst'),
-    path('devop/',views.devop,name='devop'),
-    path('answering/',views.answering,name='answering'),
+    path('finance/',views.finance,name='Finance'),
+    path('marketing/',views.marketing,name='Marketing'),
+    path('analyst/',views.analyst,name='Analyst'),
+    path('devop/',views.devop,name='Devop'),
 
-    path('answering/answerSubmit',views.answerSubmit,name='answerSubmit'),
+    path('answerSubmit',views.answerSubmit,name='answerSubmit'),
+    path('answering/<str:question>/<str:dept>',views.answering,name='answering'),
+
+    
 ]

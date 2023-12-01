@@ -28,6 +28,7 @@ def employeeDashboard(request):
 
 
 def querySubmit(request):
+    print("-----------------------------------------------------------------")
     if(request.method == 'POST'):
         dept = request.POST['department']
         query = request.POST['query']
@@ -50,6 +51,7 @@ def querySubmit(request):
         except:
             print("cant store the query")
             messages.error(request,f"failed to store query")
+    print("-----------------------------------------------------------------")
     return redirect('employeeDashboard')
 
 
@@ -60,7 +62,9 @@ def feed(request):
 def query(request):
     return render(request,"employeeapp/query.html")
 
-def unanswered(request):
+
+#------------------------------------------------------------------------------------------
+def getFinanceQuestion():
     fin_ref = database.child("Finance")
     questions_data = fin_ref.child("question").get().val()
     questionsListFinance = []
@@ -86,18 +90,123 @@ def unanswered(request):
         print("No data found under")
 
     print(questionsListFinance)
+    return questionsListFinance
+
+def getMarketingQuestion():
+    market_ref = database.child("Marketing")
+    questions_data = market_ref.child("question").get().val()
+    questionsListMarketing = []
+
+    if questions_data:
+    # Process each question
+        for question_key, question_data in questions_data.items():
+            query = question_data.get("query")
+            answer = question_data.get("answer")
+
+            if(answer):
+                continue
+
+            print(f"Query: {query}")
+
+            question_dict = {
+            "question": question_key,
+            "query": query,
+            }
+
+            questionsListMarketing.append(question_dict)
+    else:
+        print("No data found under")
+
+    print(questionsListMarketing)
+    return questionsListMarketing
+
+
+
+def getAnalystQuestion():
+    analyst_ref = database.child("Analyst")
+    questions_data = analyst_ref.child("question").get().val()
+    questionsListAnalyst = []
+
+    if questions_data:
+    # Process each question
+        for question_key, question_data in questions_data.items():
+            query = question_data.get("query")
+            answer = question_data.get("answer")
+
+            if(answer):
+                continue
+
+            print(f"Query: {query}")
+
+            question_dict = {
+            "question": question_key,
+            "query": query,
+            }
+
+            questionsListAnalyst.append(question_dict)
+    else:
+        print("No data found under")
+
+    print(questionsListAnalyst)
+    return questionsListAnalyst
+
+
+
+def getDevopQuestion():
+    devop_ref = database.child("Devop")
+    questions_data = devop_ref.child("question").get().val()
+    questionsListDevop = []
+
+    if questions_data:
+    # Process each question
+        for question_key, question_data in questions_data.items():
+            query = question_data.get("query")
+            answer = question_data.get("answer")
+
+            if(answer):
+                continue
+
+            print(f"Query: {query}")
+
+            question_dict = {
+            "question": question_key,
+            "query": query,
+            }
+
+            questionsListDevop.append(question_dict)
+    else:
+        print("No data found under")
+
+    print(questionsListDevop)
+    return questionsListDevop
+
+
+def unanswered(request):
+    questionsListFinance = getFinanceQuestion()
+    questionsListMarketing = getMarketingQuestion()
+    questionsListAnalyst = getAnalystQuestion()
+    questionsListDevop = getDevopQuestion()
 
     context={
         'queriesFinance':questionsListFinance,
+        "finance":"Finance",
+        'queriesMarketing':questionsListMarketing,
+        "market":"Marketing",
+        'queriesAnalyst':questionsListAnalyst,
+        "analysis":"Anaylyst",
+        'queriesDevop':questionsListDevop,
+        "devop":"Devop",
     }
+    
 
     template=loader.get_template("employeeapp/unanswered.html")
     return HttpResponse(template.render(context,request))
     # return render(request,"employeeapp/unanswered.html")
 
-
+#--------------------------------------------------------------------------------------------
 
 def finance(request):
+    print("-----------------------------------------------------------------")
     fin_ref = database.child("Finance")
     questions_data = fin_ref.child("question").get().val()
     print(questions_data)
@@ -149,12 +258,14 @@ def finance(request):
     context={
         'queries':questions_list,
     }
+    print("-----------------------------------------------------------------")
 
     template=loader.get_template("employeeapp/finance.html")
     return HttpResponse(template.render(context,request))
 
 
 def marketing(request):
+    print("-----------------------------------------------------------------")
     market_ref = database.child("Marketing")
     questions_data = market_ref.child("question").get().val()
     print(questions_data)
@@ -207,10 +318,13 @@ def marketing(request):
         'queries':questions_list,
     }
 
+    print("-----------------------------------------------------------------")
+
     template=loader.get_template("employeeapp/finance.html")
     return HttpResponse(template.render(context,request))
 
 def analyst(request):
+    print("-----------------------------------------------------------------")
     analyst_ref = database.child("Analyst")
     questions_data = analyst_ref.child("question").get().val()
     print(questions_data)
@@ -262,6 +376,7 @@ def analyst(request):
     context={
         'queries':questions_list,
     }
+    print("-----------------------------------------------------------------")
 
     template=loader.get_template("employeeapp/finance.html")
     return HttpResponse(template.render(context,request))
@@ -269,6 +384,7 @@ def analyst(request):
 
 
 def devop(request):
+    print("-----------------------------------------------------------------")
     devop_ref = database.child("Devop")
     questions_data = devop_ref.child("question").get().val()
     print(questions_data)
@@ -320,31 +436,61 @@ def devop(request):
     context={
         'queries':questions_list,
     }
+    print("-----------------------------------------------------------------")
 
     template=loader.get_template("employeeapp/finance.html")
     return HttpResponse(template.render(context,request))
 
 
 
-def answering(request):
-    return render(request,"employeeapp/answering.html")
+def answering(request,question,dept):
+    context = {
+        "question":question,
+        "dept":str(dept),
+    }
+    template=loader.get_template("employeeapp/answering.html")
+    return HttpResponse(template.render(context,request))
 
 
 def answerSubmit(request):
+    print("-----------------------------------------------------------------")
     if(request.method == 'POST'):
+        question = request.POST['question']
+        dept = request.POST['dept']
         answer = request.POST['answer']
-        userEmail = request.session.pop('user_email', None)
+        userEmail = request.session.get('user_email')
         print(userEmail)
 
         current_time = datetime.now()
         formatted_time = current_time.strftime('%Y-%m-%d %H:%M:%S')
+        print(str(dept))
+
+        ref = database.child(str(dept))
+        question_data = ref.child("question").child(str(question)).get().val()
+        print(question_data)
+        query = question_data.get("query")
+        user = question_data.get("user")
+        qTime = question_data.get("time")
 
         userData = {
-            "user":userEmail,
-            "time":formatted_time,
+            "query": query,
+            "user": user,
+            "time":qTime,
+            "answerUser":userEmail,
+            "answerTime":formatted_time,
             "answer":answer
         }
-    pass
+        
+        
+        try:
+            database.child(str(dept)).child('question').child(str(question)).set(userData)
+            
+            print("success")
+            
+        except:
+            print("fail")
+    print("-----------------------------------------------------------------")
+    
     #     try:
     #         database.child(str(dept)).child('question').child(str(query)).set(userData)
     #         messages.success(request,f"successfully stored the query {query}")
@@ -352,4 +498,4 @@ def answerSubmit(request):
     #     except:
     #         print("cant store the query")
     #         messages.error(request,f"failed to store query")
-    # return redirect('employeeDashboard')
+    return redirect(str(dept))
