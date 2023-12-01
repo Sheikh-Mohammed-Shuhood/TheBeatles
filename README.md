@@ -1,2 +1,2 @@
 # TheBeatles
-TheBeatles
+Employee Assistant & Tracker" stands at the forefront of workplace innovation, offering a transformative experience that goes beyond conventional paradigms. At its core, this pioneering project is an integration of two powerful components: a robust Community System and an advanced Employee Tracker. These elements work in tandem to reimagine the way we perceive and navigate the modern professional landscape.
