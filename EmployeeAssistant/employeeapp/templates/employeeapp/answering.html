@@ -111,7 +111,7 @@
                 <h1 class="display-5 mb-5">Answer the question here</h1>
             </div>
             <div>
-                <form action="answerSubmit" method="post">
+                <form action="/employeeapp/answerSubmit" method="post">
                     {% csrf_token %}
                     <div class="testimonial-item rounded bg-light my-4">
                         <div class="d-flex mb-3">
@@ -119,12 +119,14 @@
                                 <i class="fa fa-quote-right fa-2x"></i>
                             </div>
                             <div class="ps-2 my-auto testimonial-item rounded bg-white my-4 w-100">
-                                <h4 class="mb-0">Person Name</h4>
+                                <h4 class="mb-0">{{question}}</h4>
                             </div>
                         </div>
                         <div class="testimonial-content">
                             <input type="text" class="form-control border-primary mb-3 p-2"
                                 placeholder="Enter Your Answer" name="answer" required>
+                            <input type="hidden" value="{{question}}" name="question">
+                            <input type="hidden" value="{{dept}}" name="dept">
 
                         </div>
                         <div class="col-12 text-center">

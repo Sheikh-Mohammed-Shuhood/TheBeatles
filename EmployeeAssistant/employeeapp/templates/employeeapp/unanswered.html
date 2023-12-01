@@ -125,13 +125,12 @@
                 <div class="tab-content">
                     <div id="tab-6" class="tab-pane fade show p-0 active">
                         <div class="row g-4">
-
                             {%for ques in queriesFinance%}
                             <div class="col-lg-6 wow bounceInUp" data-wow-delay="0.1s">
                                 <div class="menu-item d-flex align-items-center">
                                     <div class="w-100 d-flex flex-column text-start ps-4">
                                         <div class="d-flex justify-content-between pb-2 mb-2">
-                                            <a href="/employeeapp/answering">
+                                            <a href="/employeeapp/answering/{{ques.question}}/{{finance}}">
                                                 <p class="mb-0 testimonial-item rounded bg-white my-4 w-100">
                                                     {{ques.question}}
                                                 </p>
@@ -147,83 +146,66 @@
 
 
                     <div id="tab-7" class="tab-pane fade show p-0">
-                        
                         <div class="row g-4">
+                            {%for ques in queriesMarketing%}
                             <div class="col-lg-6 wow bounceInUp" data-wow-delay="0.1s">
                                 <div class="menu-item d-flex align-items-center">
                                     <div class="w-100 d-flex flex-column text-start ps-4">
                                         <div class="d-flex justify-content-between pb-2 mb-2">
-                                            <a href="answering.html">
+                                            <a href="/employeeapp/answering/{{ques.question}}/{{market}}">
                                                 <p class="mb-0 testimonial-item rounded bg-white my-4 w-100">
-                                                    shgfsdddddddddddddddddddddddd
-                                                    aghuirwhgfauoooooooooaw Lorem ipsum dolor sit amet
-                                                    consectetur adipisicing elit. Veniam, itaque
-                                                    expedita maiores inventore modi nihil explicabo
-                                                    doloribus nulla accusantium officiis, reprehenderit
-                                                    voluptates quisquam accusamus esse quis harum
-                                                    consequatur nesciunt dolorem! Consectetur adipiscing
-                                                    elit sed dwso eiusmod tempor incididunt ut labore.
+                                                    {{ques.question}}
                                                 </p>
                                             </a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            
+                            {%endfor%}
+                        </div>   
                     </div>
 
 
 
                     <div id="tab-8" class="tab-pane fade show p-0">
-                        
                         <div class="row g-4">
+                            {%for ques in queriesAnalyst%}
                             <div class="col-lg-6 wow bounceInUp" data-wow-delay="0.1s">
                                 <div class="menu-item d-flex align-items-center">
                                     <div class="w-100 d-flex flex-column text-start ps-4">
                                         <div class="d-flex justify-content-between pb-2 mb-2">
-                                            <a href="answering.html">
+                                            <a href="/employeeapp/answering/{{ques.question}}/{{analysis}}">
                                                 <p class="mb-0 testimonial-item rounded bg-white my-4 w-100">
-                                                    shgfsdddddddddddddddddddddddd
-                                                    aghuirwhgfauoooooooooaw Lorem ipsum dolor sit amet
-                                                    consectetur adipisicing elit. Veniam, itaque
-                                                    expedita maiores inventore modi nihil explicabo
-                                                    doloribus nulla accusantium officiis, reprehenderit
-                                                    voluptates quisquam accusamus esse quis harum
-                                                    consequatur nesciunt dolorem! Consectetur adipiscing
-                                                    elit sed dwso eiusmod tempor incididunt ut labore.
+                                                    {{ques.question}}
                                                 </p>
                                             </a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            
+                            {%endfor%}
+                        </div> 
                     </div>
 
 
 
                     <div id="tab-9" class="tab-pane fade show p-0">
                         <div class="row g-4">
+                            {%for ques in queriesDevop%}
                             <div class="col-lg-6 wow bounceInUp" data-wow-delay="0.1s">
                                 <div class="menu-item d-flex align-items-center">
                                     <div class="w-100 d-flex flex-column text-start ps-4">
                                         <div class="d-flex justify-content-between pb-2 mb-2">
-                                            <a href="answering.html">
+                                            <a href="/employeeapp/answering/{{ques.question}}/{{devop}}">
                                                 <p class="mb-0 testimonial-item rounded bg-white my-4 w-100">
-                                                    shgfsdddddddddddddddddddddddd
-                                                    aghuirwhgfauoooooooooaw Lorem ipsum dolor sit amet
-                                                    consectetur adipisicing elit. Veniam, itaque
-                                                    expedita maiores inventore modi nihil explicabo
-                                                    doloribus nulla accusantium officiis, reprehenderit
-                                                    voluptates quisquam accusamus esse quis harum
-                                                    consequatur nesciunt dolorem! Consectetur adipiscing
-                                                    elit sed dwso eiusmod tempor incididunt ut labore.
+                                                    {{ques.question}}
                                                 </p>
                                             </a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            {%endfor%}
                         </div>
                     </div>
 
@@ -237,7 +219,7 @@
     <!-- JavaScript Libraries -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="{% static 'employeeapp/lib/wow/wow.min.js' %}"></script>y
+    <script src="{% static 'employeeapp/lib/wow/wow.min.js' %}"></script>
     <script src="{% static 'employeeapp/lib/easing/easing.min.js' %}"></script>
     <script src="{% static 'employeeapp/lib/waypoints/waypoints.min.js' %}"></script>
     <script src="{% static 'employeeapp/lib/counterup/counterup.min.js' %}"></script>
