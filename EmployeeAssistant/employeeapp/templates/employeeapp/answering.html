@@ -112,6 +112,7 @@
             </div>
             <div>
                 <form action="answerSubmit" method="post">
+                    {% csrf_token %}
                     <div class="testimonial-item rounded bg-light my-4">
                         <div class="d-flex mb-3">
                             <div class="position-absolute" style="top: 15px; right: 20px;">
@@ -123,7 +124,7 @@
                         </div>
                         <div class="testimonial-content">
                             <input type="text" class="form-control border-primary mb-3 p-2"
-                                placeholder="Enter Your Answer" required>
+                                placeholder="Enter Your Answer" name="answer" required>
 
                         </div>
                         <div class="col-12 text-center">
