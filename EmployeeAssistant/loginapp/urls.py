@@ -7,9 +7,10 @@ urlpatterns = [
     
     # path('user/',views.welcomePage,name='welcomePage'),
     path('signinUserSubmit',views.signinUserSubmit,name='signinUserSubmit'),
+    
 
-
-    path('admin/',views.loginAdmin,name='admin'),
-    path('admin/registerUser/',views.registerUser,name='registerUser'),
-    path('admin/registerUser/registerUserSubmit',views.registerUserSubmit,name='registerUserSubmit'),
+    path('loginAdminSubmit',views.loginAdminSubmit,name='loginAdminSubmit'),
+    path('adminDashboard',views.adminDashboard,name='adminDashboard'),
+    path('registerUser/',views.registerUser,name='registerUser'),
+    path('registerUser/registerUserSubmit',views.registerUserSubmit,name='registerUserSubmit'),
 ]

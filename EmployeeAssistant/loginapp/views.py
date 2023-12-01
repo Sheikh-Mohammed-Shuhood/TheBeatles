@@ -38,10 +38,11 @@ def signinUserSubmit(request):
 
         try:
             user = authe.sign_in_with_email_and_password(email,passwd)
+            print("---")
             request.session['user_email'] = user['email']
             print("\n\nsign in successful\n\n", user)
             return HttpResponseRedirect('/employeeapp/')
-        except Exception as e:
+        except:
             print("sign in unsuccessful")
 
     return redirect('welcomePage')
@@ -50,8 +51,28 @@ def signinUserSubmit(request):
 
 
 
-def loginAdmin(request):
+def loginAdminSubmit(request):
+    if(request.method == 'POST'):
+        email = request.POST['email']
+        passwd = request.POST['passwd']
+
+        admin = database.child("admins").child("admin_user_id").get().val()
+
+        print(email,admin.get("email"))
+        print(passwd,admin.get("password"))
+
+        if((str(admin.get("email")) == str(email)) and (str(admin.get("password")) == str(passwd))):
+            admin = authe.sign_in_with_email_and_password(email,passwd)
+            print("\n\nsign in of admin is successful\n\n", admin)
+            return HttpResponseRedirect('adminDashboard')
+        else:
+            print("sign in unsuccessful")
+    return redirect('welcomePage')
+    
+
+def adminDashboard(request):
     return render(request,"loginapp/dashboard.html")
+    
 
 def registerUser(request):
     return render(request,"loginapp/registerUser.html")
@@ -103,4 +124,4 @@ def registerUserSubmit(request):
             messages.error(request,f"failed to login")
             # return redirect('dashboard')
 
-    return redirect('admin')
+    return redirect('adminDashboard')

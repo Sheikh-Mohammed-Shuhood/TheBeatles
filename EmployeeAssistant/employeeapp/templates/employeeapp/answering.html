@@ -1,3 +1,7 @@
+{% load static %}
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,15 +23,15 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
-    <link href="lib/animate/animate.min.css" rel="stylesheet">
-    <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
-    <link href="lib/owlcarousel/owl.carousel.min.css" rel="stylesheet">
+    <link href="{% static 'employeeapp/lib/animate/animate.min.css' %}" rel="stylesheet">
+    <link href="{% static 'employeeapp/lib/lightbox/css/lightbox.min.css' %}" rel="stylesheet">
+    <link href="{% static 'employeeapp/lib/owlcarousel/owl.carousel.min.css' %}" rel="stylesheet">
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="{% static 'employeeapp/bootstrap.min.css' %}" rel="stylesheet">
 
     <!-- Template Stylesheet -->
-    <link href="css/style.css" rel="stylesheet">
+    <link href="{% static 'employeeapp/style.css' %}" rel="stylesheet">
 </head>
 
 <body>
@@ -44,7 +48,7 @@
         <div class="container-fluid nav-bar">
             <div class="container">
                 <nav class="navbar navbar-light navbar-expand-lg py-4">
-                    <a href="index.html" class="navbar-brand">
+                    <a href="/employeeapp/" class="navbar-brand">
                         <h1 class="text-primary fw-bold mb-0">The<span class="text-dark">Beatles</span> </h1>
                     </a>
                     <button class="navbar-toggler py-2 px-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
@@ -52,10 +56,10 @@
                     </button>
                     <div class="collapse navbar-collapse" id="navbarCollapse">
                         <div class="navbar-nav mx-auto">
-                            <a href="index.html" class="nav-item nav-link">Home</a>
-                            <a href="feed.html" class="nav-item nav-link">Feed</a>
-                            <a href="query.html" class="nav-item nav-link">Query</a>
-                            <a href="unanswered.html" class="nav-item nav-link active">Unanswered</a>
+                            <a href="/employeeapp/" class="nav-item nav-link">Home</a>
+                            <a href="/employeeapp/feed" class="nav-item nav-link">Feed</a>
+                            <a href="/employeeapp/query" class="nav-item nav-link">Query</a>
+                            <a href="/employeeapp/unanswered" class="nav-item nav-link active">Unanswered</a>
                             
                         </div>
                          </div>
@@ -107,24 +111,27 @@
                 <h1 class="display-5 mb-5">Answer the question here</h1>
             </div>
             <div>
-                <div class="testimonial-item rounded bg-light my-4">
-                    <div class="d-flex mb-3">
-                        <div class="position-absolute" style="top: 15px; right: 20px;">
-                            <i class="fa fa-quote-right fa-2x"></i>
+                <form action="answerSubmit" method="post">
+                    {% csrf_token %}
+                    <div class="testimonial-item rounded bg-light my-4">
+                        <div class="d-flex mb-3">
+                            <div class="position-absolute" style="top: 15px; right: 20px;">
+                                <i class="fa fa-quote-right fa-2x"></i>
+                            </div>
+                            <div class="ps-2 my-auto testimonial-item rounded bg-white my-4 w-100">
+                                <h4 class="mb-0">Person Name</h4>
+                            </div>
                         </div>
-                        <div class="ps-2 my-auto testimonial-item rounded bg-white my-4 w-100">
-                            <h4 class="mb-0">Person Name</h4>
-                        </div>
-                    </div>
-                    <div class="testimonial-content">
-                        <input type="text" class="form-control border-primary mb-3 p-2"
-                            placeholder="Enter Your Answer" required>
+                        <div class="testimonial-content">
+                            <input type="text" class="form-control border-primary mb-3 p-2"
+                                placeholder="Enter Your Answer" name="answer" required>
 
+                        </div>
+                        <div class="col-12 text-center">
+                            <button type="submit" class="btn btn-primary px-5 py-3 rounded-pill">Submit Now</button>
+                        </div>
                     </div>
-                    <div class="col-12 text-center">
-                        <button type="submit" class="btn btn-primary px-5 py-3 rounded-pill">Submit Now</button>
-                    </div>
-                </div>
+                </form>
             </div>
         </div>
     </div>
@@ -135,15 +142,15 @@
     <!-- JavaScript Libraries -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/wow/wow.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/waypoints/waypoints.min.js"></script>
-    <script src="lib/counterup/counterup.min.js"></script>
-    <script src="lib/lightbox/js/lightbox.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="{% static 'employeeapp/lib/wow/wow.min.js' %}"></script>
+    <script src="{% static 'employeeapp/lib/easing/easing.min.js' %}"></script>
+    <script src="{% static 'employeeapp/lib/waypoints/waypoints.min.js' %}"></script>
+    <script src="{% static 'employeeapp/lib/counterup/counterup.min.js' %}"></script>
+    <script src="{% static 'employeeapp/lib/lightbox/js/lightbox.min.js' %}"></script>
+    <script src="{% static 'employeeapp/lib/owlcarousel/owl.carousel.min.js' %}"></script>
 
     <!-- Template Javascript -->
-    <script src="js/main.js"></script>
+    <script src="{% static 'employeeapp/js/main.js' %}"></script>
 </body>
 
 </html>
