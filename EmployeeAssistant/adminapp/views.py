@@ -7,6 +7,7 @@ from django.template import loader
 from . import models
 import pyrebase
 
+
 # Create your views here.
 
 config = {
@@ -68,10 +69,15 @@ def trackEmpDetail(request,emp):
     browser_data = 0
 
     browsDict = dict()
-    keyboard_key = employee_data['keyboardkey']
-    mouse_key = employee_data['mousekey']
-    process_value = employee_data['process']
-    time_value = employee_data['time']
+    try:
+        keyboard_key = employee_data['keyboardkey']
+        mouse_key = employee_data['mousekey']
+        process_value = employee_data['process']
+        time_value = employee_data['time']
+    except:
+        print("keys not there")
+
+
     browser_data =empTrackDatabase.child(emp).child("browser").get().val()
 
     print("keyboard_key=",keyboard_key,"mouse_key=",mouse_key,"process_value=",process_value,"time_value=",time_value)
