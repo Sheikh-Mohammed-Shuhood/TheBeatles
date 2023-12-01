@@ -20,4 +20,5 @@ urlpatterns = [
     # path('admin/', admin.site.urls),
     path('',include('loginapp.urls')),
     path('employeeapp/',include('employeeapp.urls')),
+    path('adminDashboard/',include('adminapp.urls')),
 ]

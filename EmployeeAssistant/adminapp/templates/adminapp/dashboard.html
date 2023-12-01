@@ -1,3 +1,8 @@
+{% load static %}
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,7 +13,7 @@
         type="text/javascript"></script>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-    <link rel="stylesheet" href="./track.css">
+    <link rel="stylesheet" href="{% static 'adminapp/stylesAdmindash.css' %}">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
 
 </head>
@@ -21,7 +26,7 @@
     <div id='stars3'></div>
     <div class="btn">
         <button id="button-cancel" type="button" class="mark button secondary-button mr-12">
-            ENTER EMPLOYEE
+            <a style="text-decoration: none; padding: 10px;" href="registerUser">Register User</a>
         </button>
     </div>
     <div id='title'>
@@ -30,15 +35,13 @@
         </span>
     </div>
     <div class="container">
+        {%for emp in empList%}
         <div class="emp name">
-            dummy
+            <a href="trackUser/{{emp}}" style="text-decoration: none;color: #ddd; padding: 40px;">
+                {{emp}}
+            </a>
         </div>
-        <div class="emp name">
-            Dummy
-        </div>
-        <div class="emp name">
-            Dummy
-        </div>
+        {%endfor%}
     </div>
     <!-- partial -->
     <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
@@ -46,33 +49,33 @@
     <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-database.js"></script>
     <script src="./script.js"></script>
     <script>
-        var empElements = document.getElementsByClassName('emp');
+        var empElements = document.getElementsByClassName('');
         for (var i = 0; i < empElements.length; i++) {
             empElements[i].addEventListener('click', function () {
-                window.location.href = "./trackDetails.html";
+                window.location.href = "trackUser/{{emp}}";
             });
         }
-        const firebaseConfig = {
-            apiKey: "AIzaSyB8ArVGllljFel0S4DaAHhEsZeWnRKv0Jk",
-            authDomain: "storeactions-bdf68.firebaseapp.com",
-            databaseURL: "https://storeactions-bdf68-default-rtdb.firebaseio.com",
-            projectId: "storeactions-bdf68",
-            storageBucket: "storeactions-bdf68.appspot.com",
-            messagingSenderId: "383468636556",
-            appId: "1:383468636556:web:f87bd60fc7c1b9bc7faea9",
-            measurementId: "G-BCCER9PMS8"
-        };
-        firebase.initializeApp(firebaseConfig);
+        // const firebaseConfig = {
+        //     apiKey: "AIzaSyB8ArVGllljFel0S4DaAHhEsZeWnRKv0Jk",
+        //     authDomain: "storeactions-bdf68.firebaseapp.com",
+        //     databaseURL: "https://storeactions-bdf68-default-rtdb.firebaseio.com",
+        //     projectId: "storeactions-bdf68",
+        //     storageBucket: "storeactions-bdf68.appspot.com",
+        //     messagingSenderId: "383468636556",
+        //     appId: "1:383468636556:web:f87bd60fc7c1b9bc7faea9",
+        //     measurementId: "G-BCCER9PMS8"
+        // };
+        // firebase.initializeApp(firebaseConfig);
 
-        var database = firebase.database();
-        var dataRef = database.ref("/");
+        // var database = firebase.database();
+        // var dataRef = database.ref("/");
 
-        dataRef.on("value", function (snapshot) {
-            var data = snapshot.val();
+        // dataRef.on("value", function (snapshot) {
+        //     var data = snapshot.val();
 
-            var elem = document.getElementById("elem");
-            elem.innerHTML = JSON.stringify(data); // Convert object to string
-        });
+        //     var elem = document.getElementById("elem");
+        //     elem.innerHTML = JSON.stringify(data); // Convert object to string
+        // });
     </script>
 </body>
 

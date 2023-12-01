@@ -4,10 +4,11 @@ from django.contrib.auth import authenticate,login,logout
 from django.contrib import messages
 from django.template import loader
 from . import models
+import pyrebase
+
 # from firebase_admin import auth
 
 
-import pyrebase
 
 config = {
     "apiKey": "AIzaSyA8MCanCoi37ZieknWHnlYaqQWj0Nb2Vzk",
@@ -64,7 +65,7 @@ def loginAdminSubmit(request):
         if((str(admin.get("email")) == str(email)) and (str(admin.get("password")) == str(passwd))):
             admin = authe.sign_in_with_email_and_password(email,passwd)
             print("\n\nsign in of admin is successful\n\n", admin)
-            return HttpResponseRedirect('adminDashboard')
+            return HttpResponseRedirect('/adminDashboard/')
         else:
             print("sign in unsuccessful")
     return redirect('welcomePage')
